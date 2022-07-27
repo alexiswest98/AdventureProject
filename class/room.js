@@ -44,9 +44,9 @@ class Room {
     }
 
     getItemByName(name) {
-
-        // Fill this in
+        return this.items.indexOf(name) 
     }
+
 
 }
 

@@ -1,8 +1,8 @@
 
-// FILL THIS OUT
+const {Item} = require('./item')
 
 class Food {
-
+  
 }
 
 module.exports = {
