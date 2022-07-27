@@ -33,17 +33,26 @@ class Player {
   }
 
   takeItem(itemName) {
-    let item = this.currentRoom.getItemByName(itemName);
-    let indx = this.currentRoom.items.indexOf(item);
-    this.currentRoom.items.splice(indx, 1);
+    let item = this.removeItem(itemName, this.currentRoom);
+    // let item = this.currentRoom.getItemByName(itemName);
+    // let indx = this.currentRoom.items.indexOf(item);
+    // this.currentRoom.items.splice(indx, 1);
     this.items.push(item);
     return item;
   }
 
-  dropItem(itemName, obj) {
-    let item = this.getItemByName(itemName);
-    let indx = this.items.indexOf(item);
-    this.items.splice(indx, 1);
+  removeItem(itemName, obj) {
+    let item = this.getItemByName(itemName, obj);
+    let indx = obj.items.indexOf(item);
+    obj.items.splice(indx, 1);
+    return item;
+  }
+
+  dropItem(itemName) {
+    let item = this.removeItem(itemName, this);
+    // let item = this.getItemByName(itemName);
+    // let indx = this.items.indexOf(item);
+    // this.items.splice(indx, 1);
     this.currentRoom.items.push(item);
     return item;
   }
@@ -56,8 +65,8 @@ class Player {
     }
   }
 
-  getItemByName(name) {
-    return this.currentRoom.getItemByName.call(this, name);
+  getItemByName(name, obj = this) {
+    return this.currentRoom.getItemByName.call(obj, name);
   }
 }
 
