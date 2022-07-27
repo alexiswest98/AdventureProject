@@ -40,15 +40,12 @@ class World {
       let newItem;
 
       if (itemData.isFood) {
-        console.log("ERROR: Food not supported yet.");
         // Fill this in
         // newItem = new Food()
 
-        newItem = new Food(itemData.name, itemData.description);
-        return newItem;
+        newItem = new Food(itemData.name, itemData.description, itemData.room);
       } else {
         newItem = new Item(itemData.name, itemData.description);
-        console.log("here");
       }
 
       let itemRoom = this.rooms[itemData.room];

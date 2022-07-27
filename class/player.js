@@ -40,16 +40,18 @@ class Player {
     return item;
   }
 
-  dropItem(itemName) {
-    let indx = this.items.indexOf(itemName);
+  dropItem(itemName, obj) {
+    let item = this.getItemByName(itemName);
+    let indx = this.items.indexOf(item);
     this.items.splice(indx, 1);
-    this.currentRoom.items.push(itemName);
+    this.currentRoom.items.push(item);
+    return item;
   }
 
   eatItem(itemName) {
     let item = this.getItemByName(itemName);
     if (item instanceof Food) {
-      let indx = this.Player.items.indexOf(item);
+      let indx = this.items.indexOf(item);
       this.items.splice(indx, 1);
     }
   }
